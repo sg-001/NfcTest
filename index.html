@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shlok Gunjan</title>
+    <title>NFC Nexus</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="mediaqueries.css" />
   </head>
@@ -15,59 +15,125 @@
         <img src="./assets/profile-pic.jpg" alt="John Doe profile picture" />
       </div>
       <div class="section__text">
-        <p class="section__text__p1">Hello, I'm</p>
-        <h1 class="title">Shlok Gunjan</h1>
-        <p class="section__text__p2">Founder & CEO</p>
-        <div class="btn-container">
-          <button
-            class="btn btn-color-2"
-            onclick="window.open('./assets/resume-example.pdf')"
-          >
-            Save Contact
-          </button>
-          <button class="btn btn-color-1" onclick="location.href='https://www.agencycareerlic.co.in/?utm_source=google&utm_medium=wix_google_business_profile&utm_campaign=12545205246853224201'">
-            Website
-          </button>
-        </div>
-        <div id="socials-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="My LinkedIn profile"
-            class="icon"
-            onclick="location.href='https://www.linkedin.com/in/shlok-gunjan-12619b19a/'"
-          />
-          <img
-            src="./assets/github.png"
-            alt="My Github profile"
-            class="icon"
-            onclick="location.href='https://github.com/sg-001'"
-          />
-          <img
-            src="./assets/instagram.png"
-            alt="My LinkedIn profile"
-            class="icon"
-            onclick="location.href='https://www.instagram.com/shlok_gunjan/'"
-          />
-          <img
-            src="./assets/linkedin.png"
-            alt="My LinkedIn profile"
-            class="icon"
-            onclick="location.href='https://www.linkedin.com/in/shlok-gunjan-12619b19a/'"
-          />
-          <img
-            src="./assets/linkedin.png"
-            alt="My LinkedIn profile"
-            class="icon"
-            onclick="location.href='https://www.linkedin.com/in/shlok-gunjan-12619b19a/'"
-          />
-          <img
-            src="./assets/linkedin.png"
-            alt="My LinkedIn profile"
-            class="icon"
-            onclick="location.href='https://www.linkedin.com/in/shlok-gunjan-12619b19a/'"
-          />
-        </div>
-      </div>
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <style>
+        .container {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+        }
+        .quantity-controls button {
+            margin: 0 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .form-group button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="productForm">
+            <div class="form-group">
+                <label for="id">ID:</label>
+                <input type="text" id="id" name="id" value="1224" readonly>
+            </div>
+            <div class="form-group">
+                <label for="name">NAME:</label>
+                <input type="text" id="name" name="name" value="BRA" readonly>
+            </div>
+            <div class="form-group">
+                <label for="category">CATEGORY:</label>
+                <input type="text" id="category" name="category" value="SPORTS" readonly>
+            </div>
+            <div class="form-group">
+                <label for="description">DESCRIPTION:</label>
+                <input type="text" id="description" name="description" value="L" readonly>
+            </div>
+            <div class="form-group quantity-controls">
+                <label for="quantity">QUANTITY:</label>
+                <input type="number" id="quantity" name="quantity" value="0">
+                <button type="button" onclick="adjustQuantity(1)">+</button>
+            </div>
+            <div class="form-group">
+                <label for="stock-left">STOCK LEFT:</label>
+                <input type="text" id="stock-left" name="stock-left" value="34" readonly>
+            </div>
+            <div class="form-group">
+                <button type="button" onclick="updateStock('add')">Add</button>
+                <button type="button" onclick="updateStock('remove')">Remove</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const stockLeftElement = document.getElementById('stock-left');
+        let stockLeft = parseInt(stockLeftElement.value, 10);
+
+        function adjustQuantity(amount) {
+            const quantityInput = document.getElementById('quantity');
+            let currentQuantity = parseInt(quantityInput.value, 10);
+            currentQuantity += amount;
+
+            if (currentQuantity < 0) currentQuantity = 0; // Prevent negative quantity
+            quantityInput.value = currentQuantity;
+        }
+
+        function updateStock(action) {
+            const quantityInput = document.getElementById('quantity');
+            let currentQuantity = parseInt(quantityInput.value, 10);
+
+            if (action === 'add') {
+                stockLeft += currentQuantity;
+            } else if (action === 'remove') {
+                if (currentQuantity > stockLeft) {
+                    stockLeft = 0; // Prevent negative stock
+                } else {
+                    stockLeft -= currentQuantity;
+                }
+            }
+
+            stockLeftElement.value = stockLeft;
+            quantityInput.value = 0; // Reset quantity after update
+        }
+    </script>
+</body>
+</html>
+
+      
+     
     
     </section>
 
